@@ -171,7 +171,12 @@ else:
     expected_points = off_peak_sessions * 1000
     st.write(f"예상 적립 포인트: **{expected_points:,} P**")
     
+    if off_peak_sessions >= 10:
+        st.balloons()
+        st.success("🎊 대단해요! 비피크 충전 10회 달성 시 에코 챔피언 배지를 획득합니다!")
+    
     if churn_df.loc[selected_user, 'churn_risk']:
         st.error(f"⚠️ **알림**: {churn_df.loc[selected_user, 'risk_reason']}으로 인해 이용 패턴이 변화되었습니다.")
         st.markdown("다시 찾아주시는 회원님을 위한 **특별 복귀 쿠폰(30% 할인)**을 확인하세요!")
         st.button("쿠폰 받기")
+
